@@ -12,9 +12,9 @@
 </head>
 
 <body class='d-flex flex-column vh-100'>
-    <%- include('../partials/navbar')%>
+    <%- include('../partials/flash')%>
         <main class='container mt-5'>
-            <%=success %>
+            <%- include('../partials/navbar')%>
                 <%- body %>
         </main>
         <%- include('../partials/footer')%>
