@@ -10,8 +10,9 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const User = require('./models/user');
 
-const campgrounds = require('./routes/campgrounds');
-const reviews = require('./routes/reviews');
+const userRoutes = require('./routes/users')
+const campgroundRoutes = require('./routes/campgrounds');
+const reviewRoutes = require('./routes/reviews');
 const { getMaxListeners } = require('./models/user');
 
 // const Campground = require('./models/campground');
@@ -70,14 +71,14 @@ app.use((req, res, next) => {
     next();
 })
 
-app.get('/fakeuser', async (req,res) => {
-    const user = new User({email: 'mp@gmail.com', username: 'paciek'});
-    const newUser = await User.register(user, 'paciek1');
-    res.send(newUser);
-})
-
-app.use('/campgrounds', campgrounds)
-app.use('/campgrounds/:id/reviews', reviews)
+// app.get('/fakeuser', async (req,res) => {
+//     const user = new User({email: 'mp@gmail.com', username: 'paciek'});
+//     const newUser = await User.register(user, 'paciek1');
+//     res.send(newUser);
+// })
+app.use('/', userRoutes)
+app.use('/campgrounds', campgroundRoutes)
+app.use('/campgrounds/:id/reviews', reviewRoutes)
 
 app.get('/', (req, res) => {
     res.render('home')
