@@ -6,8 +6,9 @@ const ExpressError = require('../utils/ExpressError');
 const Campground = require('../models/campground');
 const Review = require('../models/review')
 const {isLoggedIn, isAuthor, validateCampground} = require('../middleware');
-const multer  = require('multer')
-const upload = multer({ dest: 'uploads/' })
+const multer  = require('multer');
+const {storage} = require('../cloudinary');
+const upload = multer({ storage });
 
 
 router.route('/')
