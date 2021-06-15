@@ -161,7 +161,8 @@ app.use((err, req, res, next) => {
     if (!err.message) err.message = 'Something went wrong'
     res.status(statusCode).render('error', { err })
 });
-const posrt = process.env.PORT || 3000
+
+const port = process.env.PORT || 3000
 app.listen(port, () => {
     console.log(`Serving on port ${port}`)
 });
